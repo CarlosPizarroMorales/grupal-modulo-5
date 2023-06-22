@@ -265,6 +265,7 @@ public class UsuarioDAO {
 					statement.setString(8, c.getComuna());
 					statement.setString(9, c.getAfp());
 					statement.setString(10, c.getSistemaSalud());
+					statement.setInt(11, c.getEdad());
 					statement.setString(12, null);
 					statement.setString(13, null);
 					statement.setString(14, null);
@@ -283,6 +284,7 @@ public class UsuarioDAO {
 					statement.setString(8, null);
 					statement.setString(9, null);
 					statement.setString(10, null);
+					statement.setInt(11, 0);
 					statement.setString(12, a.getArea());
 					statement.setString(13, a.getExpPrevia());
 					statement.setString(14, null);
@@ -301,6 +303,7 @@ public class UsuarioDAO {
 					statement.setString(8, null);
 					statement.setString(9, null);
 					statement.setString(10, null);
+					statement.setInt(11, 0);
 					statement.setString(12, null);
 					statement.setString(13, null);
 					statement.setString(14, p.getTitulo());
@@ -331,7 +334,6 @@ public class UsuarioDAO {
     		}
 		}
 
-		
 		
 		// Crear conexión: uso privado para devolver instancia/conexión
 	    private Connection obtenerConexion() {

@@ -32,6 +32,7 @@ Las entregas se presentan en este README de acuerdo al orden natural en que han 
 6. [Entrega 6 - Ejercicio 6](#Entrega-6-Ejercicio-6)
 7. [Entrega 7 - Ejercicio 7](#Entrega-7-Ejercicio-7)
 8. [Entrega 8 - Sprint](#Entrega-8-Sprint)
+9. [Modelos del proyecto](#Modelos)
 
 ## *Requerimientos generales*
 
@@ -268,3 +269,10 @@ Consideraciones:
 - Se crea un solo DAO para la relación con la base de datos independiente del tipo de usuario.
 - Se crea una tabla general que contiene cualquier tipo de usuario y valores `NULL` en los campos que no le corresponden.
 - **[Volver a Contenidos](#Contenidos)**
+
+
+## Modelos 
+Diagrama de clases:
+![foto1](./modeloER.png)
+Modelo Entidad-relación:
+![foto2](./ModeloER2.png)
