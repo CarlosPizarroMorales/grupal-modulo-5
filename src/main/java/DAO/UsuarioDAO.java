@@ -145,8 +145,12 @@ public class UsuarioDAO {
 							p.setNombres(resultSet.getString("nombres"));
 							p.setApellidos(resultSet.getString("apellidos"));
 							p.setFechaNacimiento(LocalDate.parse(resultSet.getString("fechaNacimiento")));
+							if (resultSet.getString("fechaIngreso") != null) {
+								p.setFechaIngreso(LocalDate.parse(resultSet.getString("fechaIngreso")));								
+							} else {
+								p.setFechaIngreso(null);
+							}
 							p.setTitulo(resultSet.getString("titulo"));
-							p.setFechaIngreso(LocalDate.parse(resultSet.getString("fechaIngreso")));
 							usuarios.add(p);
 							break;
 						case "administrativo":
