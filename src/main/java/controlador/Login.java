@@ -13,7 +13,8 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class Login
  */
-@WebServlet(name = "Login",urlPatterns = {"/iniciar-sesion","iniciar-sesion"})
+@WebServlet(name = "Login", urlPatterns = {"/iniciar-sesion"})
+//@WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     //public static String textLogInOutButton = "Iniciar Sesión";   
@@ -65,7 +66,7 @@ public class Login extends HttpServlet {
 					session.setAttribute("password", password);
 					String mensajeSaludo = "Bienvenido " + usuario;
 					request.setAttribute("saludo", mensajeSaludo);
-					RequestDispatcher view = request.getRequestDispatcher("views/contacto.jsp");
+					RequestDispatcher view = request.getRequestDispatcher("index.jsp");
 					view.forward(request, response);	
 				} else {
 					System.out.println("usuario incorrecto");

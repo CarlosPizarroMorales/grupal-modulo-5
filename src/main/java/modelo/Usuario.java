@@ -56,10 +56,10 @@ public class Usuario {
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Usuario [rut=" + rut + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNacimiento="
-				+ fechaNacimiento + "]";
+		return "Usuario [id=" + id + ", rut=" + rut + ", nombres=" + nombres + ", apellidos=" + apellidos
+				+ ", fechaNacimiento=" + fechaNacimiento + "]";
 	}
 }

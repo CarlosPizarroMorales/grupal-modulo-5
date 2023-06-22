@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>grupal-modulo-5</display-name>
-  <servlet-mapping>
-    <servlet-name>Contacto</servlet-name>
-    <url-pattern>/contacto</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CrearCapacitacion</servlet-name>
-    <url-pattern>/crear-capacitacion</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CrearUsuario</servlet-name>
-    <url-pattern>/crear-usuario</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>EliminarCapacitacion</servlet-name>
-    <url-pattern>/eliminar-capacitacion</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>Inicio</servlet-name>
-    <url-pattern>/inicio</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ListarCapacitaciones</servlet-name>
-    <url-pattern>/capacitaciones</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ListarUsuarios</servlet-name>
-    <url-pattern>/usuarios</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>Login</servlet-name>
-    <url-pattern>/iniciar-sesion</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ModificarCapacitacion</servlet-name>
-    <url-pattern>/modificar-capacitacion</url-pattern>
-  </servlet-mapping>
+  <display-name>m5-ejercicio-extra</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>

@@ -64,7 +64,7 @@ System.out.println("Hola en Crear capacitacion con POST");
 		CapacitacionDAO capacitacionDao = CapacitacionDAO.getInstancia();	
 		capacitacionDao.agregarCapacitacion(capacitacion);
 		
-		request.getRequestDispatcher("views/crearCapacitacion.jsp").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }

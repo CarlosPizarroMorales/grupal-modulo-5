@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Contacto
  */
-@WebServlet(name = "Contacto",urlPatterns = {"/contacto"})
+@WebServlet(name = "Contacto",urlPatterns = {"/Contacto"})
 public class Contacto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,12 +40,16 @@ public class Contacto extends HttpServlet {
 		String nombre = request.getParameter("username");
 		String mail = request.getParameter("usermail");
 		String mensaje = request.getParameter("usermessage");
-		System.out.println(nombre + " " + mail+ " "+mensaje);
-		request.getRequestDispatcher("views/contacto.jsp").forward(request, response);
+		mostrarDatosFormulario(nombre, mail, mensaje);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	
 	public static void mostrarDatosFormulario(String nombre,String mail,String mensaje) {
-		System.out.println(nombre + " " + mail+ " "+mensaje);
+		System.out.println("****************************************************"
+				+ "\nEsto está de testimonio para el 3er punto del Sprint"
+				+ "\nSe ha recibido el formulario de contacto:"
+				+ "\nNombre: " + nombre
+				+ "\nEmail: " + mail
+				+ "\nMensaje: " + mensaje);
 	}
-
 }

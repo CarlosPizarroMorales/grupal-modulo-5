@@ -6,6 +6,8 @@
 	}
 %>
 
+<% String id = request.getSession().getAttribute("id") == null ? "" : (String) request.getSession().getAttribute("id"); %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,20 +25,24 @@
 		<h1 class="text-center">Crear usuario</h1>
 		<div class="row justify-content-center">
 			<div class="col-6">
-				<form action="" class="form" w-50>
+				<form action="/grupal-modulo-5/crear-usuario" method="post" class="form">
 					<fieldset>
 						<legend>Datos básicos</legend>
-						<label class="form-label" for="">Rut: <input type="text"
-							class="form-control">
-						</label> <label class="form-label" for="">Nombres: <input
-							type="text" class="form-control" required/>
-						</label> <label class="form-label" for="">Apellidos: <input
-							type="text" class="form-control" required/>
-						</label> <label for="" class="form-label">Fecha de Nacimiento: <input
-							type="text" class="form-control" required/>
+						<input hidden type="text" name="id" value="${id}">
+						<label class="form-label" for="">Rut: 
+							<input type="text" class="form-control" name="rut"  pattern="\d{6,8}-[kK\d]" placeholder="12345678-0" required/>
+						</label> 
+						<label class="form-label" for="">Nombres: 
+							<input type="text" class="form-control" name="nombres" maxlength="50" required/>
+						</label> 
+						<label class="form-label" for="">Apellidos: 
+							<input type="text" class="form-control" name="apellidos" maxlength="50" required/>
+						</label> 
+						<label for="" class="form-label">Fecha de Nacimiento: 
+							<input type="date" class="form-control" name="fechaNacimiento" required/>
 						</label>
 					</fieldset>
-					<select name="" id="" class="form-select">
+					<select name="tipoUsuario" id="" class="form-select">
 						<option value="administrativo" disabled selected>Seleccione:</option>
 						<option value="administrativo">Administrativo</option>
 						<option value="profesional">Profesional</option>
@@ -65,9 +71,17 @@
 
 	function tipoUsuario(tipo) {
 	  const usuarios = {
-	    cliente: `<legend>Cliente</legend><label class="form-label">Teléfono: <input type="text" class="form-control " required/></label><label>Dirección: <input type="text" class="form-control ms-2" required/></label>`,
-	    profesional: `<legend>Profesional</legend><label class="form-label">Título: <input type="text" class="form-control" required/></label><label class="form-label">Fecha ingreso: <input type="text" class="form-control ms-2" required/></labelclass>`,
-	    administrativo: `<legend>Administrativo</legend><labelclass="form-label">Area: <input type="text" class="form-control" required/></label class><labelclass="form-label">Exp. previa: <input type="text" class="form-control " required/></labelclass>` 
+	    cliente: `<legend>Cliente</legend>
+	    				<label class="form-label">Teléfono: <input type="text" class="form-control" name="telefono" required></label>
+	    				<label class="form-label">Dirección: <input type="text" class="form-control ms-2" name="direccion" required/></label>
+	    				<label class="form-label">Comuna <input type="text" class="form-control" name="comuna" required/></label>
+	    				<label class="form-label">Sistema de Salud: <input type="text" class="form-control" name="salud" required/></label>
+	    				<label class="form-label">AFP: <input type="text" class="form-control" name="afp" required></label>
+	    				<label class="form-label">Edad: <input type="number" class="form-control" name="edad" min="1" max="150" step="1" required/></label>
+	    				<input type="submit" class="form-control" value="Crear">`,
+	    profesional: `<legend>Profesional</legend><label class="form-label">Título: <input type="text" class="form-control" name="titulo" required></label><label class="form-label">Fecha ingreso: <input type="date" class="form-control ms-2" name="fechaIngreso" required></label><input type="submit" class="form-control" value="Crear">`,
+	    administrativo: `<legend>Administrativo</legend><label class="form-label">Area: <input type="text" class="form-control" name="area" required></label><label class="form-label">Exp. previa: <input type="text" class="form-control " name="expPrevia" required></label><input type="submit" class="form-control" value="Crear">`
+	  	
 	  }
 	  return usuarios[tipo];
 	}

@@ -32,6 +32,7 @@ public class CrearUsuario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*
 		//String id = request.getParameter("id");
 		UsuarioDAO usuarioDAO = UsuarioDAO.getInstancia();
 		System.out.println("Testeando crear usuario en la base de datos");
@@ -44,23 +45,81 @@ public class CrearUsuario extends HttpServlet {
 		usuarioDAO.crearUsuario(p);
 		usuarioDAO.crearUsuario(a);
 
-
-	//	RequestDispatcher view = request.getRequestDispatcher("views/crearUsuario.jsp");
-	//	view.forward(request, response); 
+	 */
+		RequestDispatcher view = request.getRequestDispatcher("views/crearUsuario.jsp");
+		view.forward(request, response); 
 	}
 
 	/**
+	 * Este servlet se utiliza para crear y modificar un usuario cualquiera. 
+	 * Para ello, existe un input oculto a la vista del usuario que porta el ID de este
+	 * en el caso de que la vista haya sido creada por petición de /ModificarUsuario
+	 * y es vacía cuando la vista se crea desde /crear-usuario
+	 * Esta condición se valida al comienzo del bloque del método.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("rut"));
-		System.out.println(request.getParameter("nombre"));
-		System.out.println(request.getParameter("apellido"));
-		System.out.println(request.getParameter("fechaNaciimiento"));
+		UsuarioDAO usuarioDao = UsuarioDAO.getInstancia();
 		
-				
-		request.setAttribute("returnRut", request.getParameter("rut"));
-		request.getRequestDispatcher("views/crearUsuario").forward(request, response);
+		System.out.println("Entrando en POST de CrearUsuario");
+		//General
+		
+		
+		String id = request.getParameter("id").trim();
+		String rut = request.getParameter("rut");
+		String nombres = request.getParameter("nombres");
+		String apellidos = request.getParameter("apellidos");
+		String fechaNacimiento = request.getParameter("fechaNacimiento");
+		
+		String tipoUsuario = request.getParameter("tipoUsuario");
+		System.out.println(tipoUsuario);
+		//Cliente
+		switch (tipoUsuario) {
+			case "administrativo":
+				String area = request.getParameter("area");
+				String expPrevia = request.getParameter("expPrevia");
+				//newAdministrativo
+				Usuario a = new Administrativo(rut,nombres, apellidos,LocalDate.parse(fechaNacimiento),area,expPrevia);
+				if (id != null) {
+					a.setId(Integer.parseInt(id));
+					usuarioDao.actualizarUsuario(a);
+				} else {
+					usuarioDao.crearUsuario(a);
+				}
+				break;
+			case "profesional":
+				String titulo = request.getParameter("titulo");
+				LocalDate fechaIngreso = LocalDate.parse(request.getParameter("fechaIngreso"));
+				Usuario p = new Profesional(rut, nombres, apellidos, LocalDate.parse(fechaNacimiento), fechaIngreso, titulo);
+				if (id != null) {
+					p.setId(Integer.parseInt(id));
+					usuarioDao.actualizarUsuario(p);
+				} else {
+					usuarioDao.crearUsuario(p);
+				}
+				break;
+
+			case "cliente":
+					String telefono = request.getParameter("telefono");
+					String direccion = request.getParameter("direccion");
+					String comuna = request.getParameter("comuna");
+					String afp = request.getParameter("afp");
+					String salud = request.getParameter("salud");
+					String edad = request.getParameter("edad");
+					// new Cliente
+					Usuario u = new Cliente(rut,nombres,apellidos,LocalDate.parse(fechaNacimiento),telefono,direccion,comuna,afp,salud,Integer.parseInt(edad));
+					if (id!= null) {
+						u.setId(Integer.parseInt(id));
+						usuarioDao.actualizarUsuario(u);
+					} else {
+						usuarioDao.crearUsuario(u);
+					}
+				break;
+		default:
+			break;
+		}
+	
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }

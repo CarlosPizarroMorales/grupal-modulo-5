@@ -73,7 +73,7 @@ public class Cliente extends Usuario{
 	@Override
 	public String toString() {
 		return "Cliente [telefono=" + telefono + ", direccion=" + direccion + ", comuna=" + comuna + ", afp=" + afp
-				+ ", sistemaSalud=" + sistemaSalud + ", edad=" + edad + ", rut=" + rut + ", nombres=" + nombres
-				+ ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + "]";
+				+ ", sistemaSalud=" + sistemaSalud + ", edad=" + edad + ", id=" + id + ", rut=" + rut + ", nombres="
+				+ nombres + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + "]";
 	}
 }

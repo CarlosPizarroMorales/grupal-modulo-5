@@ -14,7 +14,6 @@ import modelo.Capacitacion;
 
 public class CapacitacionDAO {
 	
-
 	 private static CapacitacionDAO instancia;
 	    private Connection conexion;
 	    private CapacitacionDAO() {
@@ -33,6 +32,11 @@ public class CapacitacionDAO {
 
 	    // Métodos CRUD
 
+	    // C[Read]UD
+	    /**
+		 * Metodo para obtener una lista con Capacitaciones
+		 *@return una lista de Capacitaciones
+		 */
 	    public List<Capacitacion> obtenerCapacitaciones() {
 	    	
 	        List<Capacitacion> capacitaciones = new ArrayList<>();
@@ -62,6 +66,10 @@ public class CapacitacionDAO {
 	        return capacitaciones;
 	    }
 
+	    /**
+		 *Metodo para obtener una capacitacion por Id
+		 *@return  retorna Capacitacion desde base de datos
+		 */
 	    public Capacitacion obtenerCapacitacionPorId(String idCapacitacion) {
 	        Capacitacion capacitacion = null;
 	        String consulta = "SELECT * FROM capacitaciones WHERE idCapacitacion = ?";
@@ -89,6 +97,8 @@ public class CapacitacionDAO {
 	        return capacitacion;
 	    }
 
+	     
+	 	//[Create]RUD
 	    public void agregarCapacitacion(Capacitacion capacitacion) {
 	        String consulta ="INSERT INTO capacitaciones ( rutCliente, dia, fecha, hora, lugar,duracion, asistentes) " + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -110,6 +120,8 @@ public class CapacitacionDAO {
 	        }
 	    }
 
+	    
+	    // CR[Update]D
 	    public void actualizarCapacitacion(Capacitacion capacitacion) {
 	    	 String consulta = "UPDATE capacitaciones SET rutCliente = ?, dia = ?, fecha = ?, hora = ?, lugar = ?, duracion = ?, asistentes = ? "+ "WHERE idCapacitacion = ?";
 
@@ -128,6 +140,8 @@ public class CapacitacionDAO {
 	        }
 	    }
 
+	    
+	    // CRU[Delete]
 	    public void eliminarCapacitacion(int idCapacitacion) {
 	    	String consulta = "DELETE FROM capacitaciones WHERE idCapacitacion = ?";
 
@@ -141,6 +155,7 @@ public class CapacitacionDAO {
 
 	   
 
+	    // Obtener conexión
 	    private Connection obtenerConexion() {
 	        Connection conexion = null;
 
@@ -149,16 +164,24 @@ public class CapacitacionDAO {
 	            Class.forName("com.mysql.cj.jdbc.Driver");
 
 	            // Establecer los detalles de la conexión
-	            String url = "jdbc:mysql://localhost:3306/grupal5";
-	            String usuario = "root";
-	            String password = "admin";
+//	            String url = "jdbc:mysql://localhost:3306/grupal5";
+//	            String usuario = "root";
+//	            String password = "admin";
+	            String url = "jdbc:mysql://localhost:3306/m5_ejercicio_extra";
+	            String usuario = "admin_modulo5";
+	            String password = "abcd1234";
 
 	           
 	            conexion = DriverManager.getConnection(url, usuario, password);
+	            System.out.println("Conexión exitosa...");
 	        } catch (ClassNotFoundException e) {
+	        	System.out.println("La clase para el driver no existe");
 	            e.printStackTrace();
 	        } catch (SQLException e) {
+	        	System.out.println("Errores en la conexión con la base de datos:");
 	            e.printStackTrace();
+	            e.getErrorCode();
+	            e.getMessage();
 	        }
 
 	        return conexion;

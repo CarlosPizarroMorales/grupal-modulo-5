@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.UsuarioDAO;
-
 /**
- * Servlet implementation class EliminarUsuario
+ * Servlet implementation class ModificarUsuario
  */
-@WebServlet("/EliminarUsuario")
-public class EliminarUsuario extends HttpServlet {
+@WebServlet(name="ModificarUsuario",urlPatterns = {"/ModificarUsuario"})
+public class ModificarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminarUsuario() {
+    public ModificarUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,25 +26,13 @@ public class EliminarUsuario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//get id
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String idGetted = request.getParameter("id");
-		System.out.println(idGetted);
-		//not null
+		request.setAttribute("id", idGetted);
+		request.getRequestDispatcher("/views/crearUsuario.jsp").forward(request, response);
 		
-		if (idGetted != null && !idGetted.isEmpty()){
-		//inst
-			System.out.println(idGetted + " testing in GET EliminarUsuario");
-			UsuarioDAO usuarioDAO =  UsuarioDAO.getInstancia();
-			usuarioDAO.eliminarUsuario(Integer.parseInt(idGetted));
-
-		//say its ok
-			response.getWriter().println("Usuario eliminado correctamente");
-		} else {
-		// say its not ok
-			response.getWriter().println("ID erronea");
-		}
-		
-		request.getRequestDispatcher("/usuarios").forward(request, response);
+//		response.getWriter().append("Usuario modificado con éxito");
 	}
 
 	/**

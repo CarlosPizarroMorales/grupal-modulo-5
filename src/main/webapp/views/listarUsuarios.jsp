@@ -46,6 +46,7 @@
 				        <% if (usuarios != null && !usuarios.isEmpty()) { %>
 				            <% for (Usuario u : usuarios) { %>
                 				<% String tipo = u.getClass().getSimpleName(); %>
+                				<% System.out.println(u.getId()); %>
 				          
 				                <tr>
 				                    <td><%= u.getRut()%></td> <!-- Rut -->
@@ -85,12 +86,12 @@
 				                    <td>--</td>
 				                	<%} %>
 				                	<td>
-									<form action="#" method="GET" style="display:inline">
+									<form action="/grupal-modulo-5/ModificarUsuario" method="GET" style="display:inline">
 									<input type="hidden" name="id" value="<%= u.getId() %>">
 									    <input type="submit" class="btn btn-outline-primary btn-sm" value="Editar">
 									</form>
 									<span>|</span>
-									<form action="#" method="POST" style="display:inline">
+									<form action="/grupal-modulo-5/EliminarUsuario" method="GET" style="display:inline">
 									<input type="hidden" name="id" value="<%= u.getId() %>">
 									    <input type="submit" class="btn btn-outline-danger btn-sm" value="Eliminar">
 									</form>

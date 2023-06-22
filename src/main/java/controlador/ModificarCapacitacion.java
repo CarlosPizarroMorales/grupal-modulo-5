@@ -20,16 +20,13 @@ import modelo.Capacitacion;
 public class ModificarCapacitacion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ModificarCapacitacion() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *Servlet maneja peticion doGet una Capacitacion 
+	 *@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idCapacitacion = request.getParameter("idCapacitacion");
@@ -42,7 +39,8 @@ public class ModificarCapacitacion extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 *Servlet que modifica una Capacitacion 
+	 *@see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idCapacitacion = Integer.parseInt((request.getParameter("idCapacitacion")));

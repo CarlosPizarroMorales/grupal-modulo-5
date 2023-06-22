@@ -33,7 +33,8 @@ public class Profesional extends Usuario{
 
 	@Override
 	public String toString() {
-		return "Profesional [fechaIngreso=" + fechaIngreso + ", titulo=" + titulo + ", rut=" + rut + ", nombres="
-				+ nombres + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + "]";
+		return "Profesional [fechaIngreso=" + fechaIngreso + ", titulo=" + titulo + ", id=" + id + ", rut=" + rut
+				+ ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento
+				+ "]";
 	}
 }

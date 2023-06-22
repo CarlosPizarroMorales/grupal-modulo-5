@@ -33,8 +33,8 @@ public class Administrativo extends Usuario {
 
 	@Override
 	public String toString() {
-		return "Administrativo [area=" + area + ", expPrevia=" + expPrevia + ", rut=" + rut + ", nombres=" + nombres
-				+ ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + "]";
+		return "Administrativo [area=" + area + ", expPrevia=" + expPrevia + ", id=" + id + ", rut=" + rut
+				+ ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento
+				+ "]";
 	}
-	
 }
